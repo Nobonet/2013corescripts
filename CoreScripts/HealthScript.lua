@@ -123,9 +123,18 @@ function AnimateHurtOverlay()
 end
 
 HealthGUI_prototype.Parent = CoreGui:FindFirstChild("RobloxGui")
+
+local healthchanged = nil
+local died = nil
+
 function OnNewCharacter(char)
-	humanoid.HealthChanged:connect(HealthChanged)
-	humanoid.Died:connect(function() HealthChanged(0) end)
+	if healthchanged then healthchanged:Disconnect() end
+	if died then died:Disconnect() end
+	
+	humanoid = char:WaitForChild("Humanoid")
+	----------------------------------------------------
+	healthchanged = humanoid.HealthChanged:connect(HealthChanged)
+	died = humanoid.Died:connect(function() HealthChanged(0) end)
 end
 
 OnNewCharacter(self.Character or self.CharacterAdded:Wait())
