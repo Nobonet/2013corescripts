@@ -57,7 +57,6 @@ end
 waitForChild(CoreGui,"RobloxGui")
 local screenGui = game:GetService("CoreGui"):FindFirstChild("RobloxGui")
 screenGui:ClearAllChildren()
-screenGui.IgnoreGuiInset = true
 
 -- make control frame
 local ControlFrame = Instance.new("Frame")
