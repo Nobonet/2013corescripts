@@ -1,3 +1,4 @@
+print("huh")
 local controlFrame = script.Parent:FindFirstChild("ControlFrame")
 
 if not controlFrame then return end
