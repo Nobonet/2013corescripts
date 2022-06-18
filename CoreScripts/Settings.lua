@@ -1,4 +1,7 @@
 local s,e = pcall(function()
+	-- dumb variables
+	local VideoUploadPromptBehavior = "Never"
+	
 	local function waitForChild(instance, name)
 		while not instance:FindFirstChild(name) do
 			print("waiting for ".. name.. " in ".. instance:GetFullName())
@@ -1121,7 +1124,7 @@ local s,e = pcall(function()
 			local videoCaptureDropDown = nil
 			videoCaptureDropDown, updateVideoCaptureDropDownSelection = RbxGui.CreateDropDownMenu(videoNames, 
 				function(text) 
-					UserSettings().GameSettings.VideoUploadPromptBehavior = videoNameToItem[text]
+					VideoUploadPromptBehavior = videoNameToItem[text]
 				end)
 			videoCaptureDropDown.Name = "VideoCaptureField"
 			videoCaptureDropDown.ZIndex = baseZIndex + 4
@@ -1132,12 +1135,12 @@ local s,e = pcall(function()
 			videoCaptureDropDown.Parent = gameSettingsMenuFrame
 
 			syncVideoCaptureSetting = function()
-				if UserSettings().GameSettings.VideoUploadPromptBehavior == "Never" then
+				if VideoUploadPromptBehavior == "Never" then
 					updateVideoCaptureDropDownSelection(videoNames[1])
-				elseif UserSettings().GameSettings.VideoUploadPromptBehavior == "Ask me first" then
+				elseif VideoUploadPromptBehavior == "Ask me first" then
 					updateVideoCaptureDropDownSelection(videoNames[2])
 				else
-					UserSettings().GameSettings.VideoUploadPromptBehavior = "Ask me first"
+					VideoUploadPromptBehavior = "Ask me first"
 					updateVideoCaptureDropDownSelection(videoNames[2])
 				end
 			end
