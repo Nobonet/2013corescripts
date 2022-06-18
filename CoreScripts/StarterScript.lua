@@ -50,7 +50,7 @@ local s,e = pcall(function()
     	end
     end
     
-    waitForChild(CoreGui),"RobloxGui")
+    waitForChild(CoreGui,"RobloxGui")
     local screenGui = game:GetService("CoreGui"):FindFirstChild("RobloxGui")
     
     if not touchEnabled then
