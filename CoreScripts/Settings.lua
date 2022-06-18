@@ -28,7 +28,7 @@ local s,e = pcall(function()
 	local mouseLockLookScreenUrl = "http://www.roblox.com/asset?id=54071825"
 	local classicLookScreenUrl = "http://www.roblox.com/Asset?id=45915798"
 
-	local hasGraphicsSlider = (game:GetService("CoreGui").Version >= 5)
+	local hasGraphicsSlider = true
 	local GraphicsQualityLevels = 10 -- how many levels we allow on graphics slider
 	local recordingVideo = false
 
@@ -1311,7 +1311,7 @@ local s,e = pcall(function()
 				goToMenu(settingsFrame,"LeaveConfirmationMenu","down",UDim2.new(0,525,0,300))
 			end)
 
-			if game.CoreGui.Version >= 4 then -- we can use escape!
+			if true then -- we can use escape!
 				game:GetService("GuiService").EscapeKeyPressed:connect(function()
 					if currentMenuSelection == nil then
 						game.GuiService:AddCenterDialog(shield, Enum.CenterDialogType.ModalDialog,
