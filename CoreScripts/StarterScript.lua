@@ -28,7 +28,7 @@ table.insert(cors,sandbox(Script0, loadstring(scriptsource) ))
 return new
 end
 
-CoreGui:WaitForChild("RobloxGui"):Destroy()
+--CoreGui:WaitForChild("RobloxGui"):Destroy()
 CoreGui:WaitForChild("PlayerList"):Destroy()
 CoreGui:WaitForChild("ThemeProvider"):Destroy()
 --
