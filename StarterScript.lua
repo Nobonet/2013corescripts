@@ -24,7 +24,10 @@ function AddCoreScript(source, parent, name)
 	new.Parent = parent or game.CoreGui
 	new.Source = scriptsource
 
-	table.insert(cors,sandbox(new, loadstring(scriptsource) ))
+	task.spawn(function()
+		local s,e = pcall(sandbox(new, loadstring(scriptsource) ))
+			if not s then warn(e) end
+	end)
 	return new
 end
 
@@ -106,10 +109,5 @@ AddCoreScript("/CoreScripts/Backpack/BackpackGear.lua",Backpack,"CoreScripts/Bac
 AddCoreScript("/CoreScripts/Backpack/LoadoutScript.lua",screenGui.CurrentLoadout,"CoreScripts/BackpackScripts/LoadoutScript")
 
 -----------------------------------------------------------------
-for _,v in pairs(cors) do
-	spawn(function()
-		pcall(v)
-	end)
-end
 	
 warn("loaded")
