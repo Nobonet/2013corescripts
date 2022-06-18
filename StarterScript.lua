@@ -55,8 +55,6 @@ waitForChild(CoreGui,"RobloxGui")
 local screenGui = game:GetService("CoreGui"):FindFirstChild("RobloxGui")
 screenGui:ClearAllChildren()
 
-wait(10)
-
 if not touchEnabled then
 -- ToolTipper  (creates tool tips for gui)
 AddCoreScript("/CoreScripts/ToolTip.lua",screenGui,"CoreScripts/ToolTip")
@@ -108,7 +106,6 @@ AddCoreScript("/CoreScripts/Backpack/BackpackGear.lua",Backpack,"CoreScripts/Bac
 AddCoreScript("/CoreScripts/Backpack/LoadoutScript.lua",screenGui.CurrentLoadout,"CoreScripts/BackpackScripts/LoadoutScript")
 
 -----------------------------------------------------------------
-wait(3)
 for _,v in pairs(cors) do
 	task.spawn(function()
 		pcall(v)
