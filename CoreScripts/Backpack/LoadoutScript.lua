@@ -1,7 +1,7 @@
 -- A couple of necessary functions
 local function waitForChild(instance, name)
 	while not instance:FindFirstChild(name) do
-		print("waiting for ".. name.. " in ".. instance:GetFullName())
+		--print("waiting for ".. name.. " in ".. instance:GetFullName())
 		task.wait(0.1)
 	end
 	return instance[name]
@@ -57,9 +57,6 @@ local humanoid = waitForChild(player.Character, 'Humanoid')
 humanoid.Died:connect(function() 
 	backpackButton.Visible = false 
 end)
-
-waitForChild(game, "LocalBackpack")
-game.LocalBackpack:SetOldSchoolBackpack(false)
 
 waitForChild(currentLoadout.Parent,"Backpack")
 local guiBackpack = currentLoadout.Parent.Backpack
