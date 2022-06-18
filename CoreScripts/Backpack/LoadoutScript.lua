@@ -90,10 +90,6 @@ local firstInstanceOfLoadout = false
 
 local inventory = {}
 
-for i = 0, 9 do
-	game:GetService("GuiService"):AddKey(tostring(i)) -- register our keys
-end
-
 local gearSlots = {}
 for i = 1, maxNumLoadoutItems do
 	gearSlots[i] = "empty"
@@ -1003,8 +999,13 @@ guiBackpack.SwapSlot.Changed:connect(function()
 	end
 end)
 
-game:GetService("GuiService").KeyPressed:connect(function(key)
-	if characterInWorkspace() then
+local UserInputService = game:GetService("UserInputService")
+local dudes = {Enum.KeyCode.One, Enum.KeyCode.Two,Enum.KeyCode.Three,Enum.KeyCode.Four,Enum.KeyCode.Five,Enum.KeyCode.Six,Enum.KeyCode.Seven,Enum.KeyCode.Eight,Enum.KeyCode.Nine,Enum.KeyCode.Zero}
+UserInputService.InputBegan:connect(function(input, processed)
+	if processed or UserInputService:GetFocusedTextBox() ~= nil then return end
+	local key = table.find(dudes, input.KeyCode)
+		
+	if characterInWorkspace() and key then
 		activateGear(key)
 	end
 end)
