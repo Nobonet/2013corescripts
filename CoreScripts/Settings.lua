@@ -21,7 +21,7 @@ local s,e = pcall(function()
 	end
 
 	local RbxGui
-		
+
 	local helpButton = nil
 	local updateCameraDropDownSelection = nil
 	local updateVideoCaptureDropDownSelection = nil
@@ -1199,7 +1199,7 @@ local s,e = pcall(function()
 	if true then
 		RbxGui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nobonet/2013corescripts/main/Libraries/RbxGui.lua"))()
 		print(RbxGui)
-							
+
 		local baseZIndex = 0
 		if UserSettings then
 			local createSettingsDialog = function()
@@ -1229,8 +1229,6 @@ local s,e = pcall(function()
 				shield.BackgroundTransparency = 0.4
 				shield.ZIndex = baseZIndex + 2
 				mainShield = shield
-									
-									print(shield)
 
 				local frame = Instance.new("Frame")
 				frame.Name = "Settings"
@@ -1317,7 +1315,7 @@ local s,e = pcall(function()
 				end)
 
 				if true then -- we can use escape!
-					game:GetService("GuiService").EscapeKeyPressed:connect(function()
+					game:GetService("UserInputService").InputBegan:Connect(function(i) if i.KeyCode ~= Enum.KeyCode.Escape then return end
 						if currentMenuSelection == nil then
 							game.GuiService:AddCenterDialog(shield, Enum.CenterDialogType.ModalDialog,
 								--showFunction
