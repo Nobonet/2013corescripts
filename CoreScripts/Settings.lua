@@ -1229,6 +1229,8 @@ local s,e = pcall(function()
 				shield.BackgroundTransparency = 0.4
 				shield.ZIndex = baseZIndex + 2
 				mainShield = shield
+									
+									print(shield)
 
 				local frame = Instance.new("Frame")
 				frame.Name = "Settings"
