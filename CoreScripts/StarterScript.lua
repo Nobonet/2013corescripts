@@ -30,7 +30,7 @@ end
 
 --CoreGui:WaitForChild("RobloxGui"):Destroy()
 CoreGui:WaitForChild("PlayerList"):Destroy()
-CoreGui:WaitForChild("ThemeProvider"):Destroy()
+--CoreGui:WaitForChild("ThemeProvider"):Destroy()
 --
 Instance.new("ScreenGui", CoreGui).Name = "RobloxGui"
 	
