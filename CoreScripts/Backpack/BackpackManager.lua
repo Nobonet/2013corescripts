@@ -377,14 +377,16 @@ screen.Changed:connect(function(prop)
 end)
 
 -- GuiService key setup
-game:GetService("GuiService"):AddKey(tilde)
-game:GetService("GuiService"):AddKey(backquote)
-game:GetService("GuiService").KeyPressed:connect(function(key)
-	if not active then return end
-	if key == tilde or key == backquote then
+local uis = game:GetService("UserInputService")
+uis.InputBegan:Connect(function(i, p)
+	local key = i.KeyCode
+		
+	if not active or p then return end
+	if key == Enum.KeyCode.Tilde or key == Enum.KeyCode.Backquote then
 		toggleBackpack()
 	end
 end)
+
 backpackButton.MouseButton1Click:connect(function() 
 	if not active then return end
 	toggleBackpack()
