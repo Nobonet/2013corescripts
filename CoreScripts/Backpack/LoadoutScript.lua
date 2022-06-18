@@ -3,9 +3,10 @@ if game.CoreGui.Version < 3 then return end -- peace out if we aren't using the 
 -- A couple of necessary functions
 local function waitForChild(instance, name)
 	while not instance:FindFirstChild(name) do
-		instance.ChildAdded:wait()
+		print("waiting for ".. name.. " in ".. instance:GetFullName())
+		task.wait(0.1)
 	end
-	return instance:FindFirstChild(name)
+	return instance[name]
 end
 local function waitForProperty(instance, property)
 	while not instance[property] do
