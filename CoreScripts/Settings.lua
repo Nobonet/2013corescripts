@@ -1205,7 +1205,8 @@ local s,e = pcall(function()
 				if settingsButton == nil then
 					settingsButton = Instance.new("ImageButton")
 					settingsButton.Name = "SettingsButton"
-					settingsButton.Image = "rbxasset://textures/ui/SettingsButton.png"
+					settingsButton.Image = "rbxassetid://6920610194"
+					settingsButton.HoverImage = "rbxassetid://6923874687"
 					settingsButton.BackgroundTransparency = 1
 					settingsButton.Active = false
 					settingsButton.Size = UDim2.new(0,54,0,46)
