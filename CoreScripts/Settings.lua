@@ -1409,7 +1409,7 @@ local s,e = pcall(function()
 
 			delay(0, function()
 				local s, settingsshield = pcall(createSettingsDialog)
-				print(s, settingsshield)
+				warn(s, settingsshield)
 				settingsshield.Parent = gui
 
 				gui.BottomLeftControl.SettingsButton.Active = true
