@@ -41,7 +41,7 @@ while Game.Players.LocalPlayer == nil do wait(0.03) end
 
 local Player = Game.Players.LocalPlayer 
 while Player.Character == nil do wait(0.03) end 
-local RbxUtility = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nobonet/2013corescripts/main/Libraries/RbxUtility.lua"))
+local RbxUtility = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nobonet/2013corescripts/main/Libraries/RbxUtility.lua"))()
 local Gui = typedef(RbxUtility) 
 local Camera = workspace.CurrentCamera 
 
