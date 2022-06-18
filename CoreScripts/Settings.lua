@@ -1114,9 +1114,9 @@ local s,e = pcall(function()
 			local videoNames = {}
 			local videoNameToItem = {}
 			videoNames[1] = "Just Save to Disk"
-			videoNameToItem[videoNames[1]] = Enum.UploadSetting["Never"]
+			videoNameToItem[videoNames[1]] = "Never"
 			videoNames[2] = "Upload to YouTube"
-			videoNameToItem[videoNames[2]] = Enum.UploadSetting["Ask me first"]
+			videoNameToItem[videoNames[2]] = "Ask me first"
 
 			local videoCaptureDropDown = nil
 			videoCaptureDropDown, updateVideoCaptureDropDownSelection = RbxGui.CreateDropDownMenu(videoNames, 
@@ -1132,12 +1132,12 @@ local s,e = pcall(function()
 			videoCaptureDropDown.Parent = gameSettingsMenuFrame
 
 			syncVideoCaptureSetting = function()
-				if UserSettings().GameSettings.VideoUploadPromptBehavior == Enum.UploadSetting["Never"] then
+				if UserSettings().GameSettings.VideoUploadPromptBehavior == "Never" then
 					updateVideoCaptureDropDownSelection(videoNames[1])
-				elseif UserSettings().GameSettings.VideoUploadPromptBehavior == Enum.UploadSetting["Ask me first"] then
+				elseif UserSettings().GameSettings.VideoUploadPromptBehavior == "Ask me first" then
 					updateVideoCaptureDropDownSelection(videoNames[2])
 				else
-					UserSettings().GameSettings.VideoUploadPromptBehavior = Enum.UploadSetting["Ask me first"]
+					UserSettings().GameSettings.VideoUploadPromptBehavior = "Ask me first"
 					updateVideoCaptureDropDownSelection(videoNames[2])
 				end
 			end
