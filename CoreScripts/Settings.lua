@@ -296,7 +296,7 @@ local s,e = pcall(function()
 
 		local image = Instance.new("ImageLabel")
 		image.Name = "Image"
-		if UserSettings().GameSettings.ControlMode == Enum.ControlMode["Mouse Lock Switch"] then
+		if UserSettings().GameSettings.ControlMode == Enum.ControlMode.MouseLockSwitch then
 			image.Image = mouseLockLookScreenUrl
 		else
 			image.Image = classicLookScreenUrl
@@ -310,7 +310,7 @@ local s,e = pcall(function()
 		buttons[1] = {}
 		buttons[1].Text = "Look"
 		buttons[1].Function = function()
-			if UserSettings().GameSettings.ControlMode == Enum.ControlMode["Mouse Lock Switch"] then
+			if UserSettings().GameSettings.ControlMode == Enum.ControlMode.MouseLockSwitch then
 				image.Image = mouseLockLookScreenUrl
 			else
 				image.Image = classicLookScreenUrl
@@ -390,6 +390,10 @@ local s,e = pcall(function()
 		yesButton.ZIndex = baseZIndex + 4
 		yesButton.Parent = frame
 		yesButton.Modal = true
+		
+		yesButton.MouseButton1Click:Connect(function()
+			game:shutdown()
+		end)
 
 		local noButton = createTextButton("Stay",Enum.ButtonStyle.RobloxButtonDefault,Enum.FontSize.Size24,UDim2.new(0,128,0,50),UDim2.new(0,90,0.8,0))
 		noButton.Name = "NoButton"
@@ -1170,7 +1174,7 @@ local s,e = pcall(function()
 				UserSettings().GameSettings.ControlMode = enumNameToItem[text] 
 
 				pcall(function()
-					if mouseLockLabel and UserSettings().GameSettings.ControlMode == Enum.ControlMode["Mouse Lock Switch"] then
+					if mouseLockLabel and UserSettings().GameSettings.ControlMode == Enum.ControlMode.MouseLockSwitch then
 						mouseLockLabel.Visible = true
 					elseif mouseLockLabel then
 						mouseLockLabel.Visible = false
@@ -1411,7 +1415,7 @@ local s,e = pcall(function()
 				gui.BottomLeftControl.SettingsButton.Active = true
 				gui.BottomLeftControl.SettingsButton.Position = UDim2.new(0,2,0,-2)
 
-				if mouseLockLabel and UserSettings().GameSettings.ControlMode == Enum.ControlMode["Mouse Lock Switch"] then
+				if mouseLockLabel and ControlMode == "Mouse Lock Switch" then
 					mouseLockLabel.Visible = true
 				elseif mouseLockLabel then
 					mouseLockLabel.Visible = false
@@ -1602,7 +1606,7 @@ local s,e = pcall(function()
 				shield.Visible = false
 				game.GuiService:RemoveCenterDialog(shield)
 			end
-			
+
 			shield.Visible = false
 			return shield
 		end
