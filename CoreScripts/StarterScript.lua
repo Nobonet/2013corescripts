@@ -1,5 +1,3 @@
-warn(":O")
-
 local git = "https://raw.githubusercontent.com/Nobonet/2013corescripts/main"
 local CoreGui = game:GetService("CoreGui")
 
@@ -20,17 +18,20 @@ end
 
 local cors = {}
 function AddCoreScript(source, parent, name)
+    local scriptsource = game:HttpGet(git..source)
     local new = Instance.new("LocalScript")
     new.Name = name or "LocalScript"
     new.Parent = parent or game.CoreGui
+    new.Source = scriptsource
     
-    table.insert(cors,sandbox(Script0, loadstring(game:HttpGet(git..source)) ))
+    table.insert(cors,sandbox(Script0, loadstring(scriptsource) ))
     return new
 end
 
 local s,e = pcall(function()
 	CoreGui:WaitForChild("RobloxGui"):Destroy()
 	CoreGui:WaitForChild("PlayerList"):Destroy()
+	CoreGui:WaitForChild("ThemeProvider"):Destroy()
 	--
 	Instance.new("ScreenGui", CoreGui).Name = "RobloxGui"
 	
@@ -43,7 +44,8 @@ local s,e = pcall(function()
 
     local function waitForChild(instance, name)
     	while not instance:FindFirstChild(name) do
-    		instance.ChildAdded:wait()
+    		print("waiting for ".. name.. " in ".. instance:GetFullName())
+			task.wait(0.1)
     	end
     end
     local function waitForProperty(instance, property)
