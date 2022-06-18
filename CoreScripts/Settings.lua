@@ -2,7 +2,7 @@ local s,e = pcall(function()
 	local function waitForChild(instance, name)
 		while not instance:FindFirstChild(name) do
 			print("waiting for ".. name.. " in ".. instance:GetFullName())
-			task.wait(0.1)
+			task.wait(0.5)
 		end
 		return instance[name]
 	end
@@ -1198,7 +1198,7 @@ local s,e = pcall(function()
 	  RbxGui = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nobonet/2013corescripts/main/Libraries/RbxGui.lua"))()
 	  local baseZIndex = 0
 	if UserSettings then
-
+warn("user settings")
 		local createSettingsDialog = function()
 			waitForChild(gui,"BottomLeftControl")
 			settingsButton = gui.BottomLeftControl:FindFirstChild("SettingsButton")
