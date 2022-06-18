@@ -104,8 +104,8 @@ local s,e = pcall(function()
     AddCoreScript("/CoreScripts/Backpack/LoadoutScript.lua",screenGui.CurrentLoadout,"CoreScripts/BackpackScripts/LoadoutScript")
     
     -----------------------------------------------------------------
-    for i,v in pairs(cors) do
-    	spawn(function()
+    for _,v in pairs(cors) do
+    	task.spawn(function()
     		pcall(v)
     	end)
     end
