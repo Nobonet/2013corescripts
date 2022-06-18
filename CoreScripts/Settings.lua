@@ -1,7 +1,7 @@
 local s,e = pcall(function()
 	-- dumb variables
 	local VideoUploadPromptBehavior = "Never"
-	
+
 	local function waitForChild(instance, name)
 		while not instance:FindFirstChild(name) do
 			print("waiting for ".. name.. " in ".. instance:GetFullName())
@@ -54,10 +54,6 @@ local s,e = pcall(function()
 
 	local function Color3I(r,g,b)
 		return Color3.new(r/255,g/255,b/255)
-	end
-
-	local function robloxLock(instance)
-		-- no
 	end
 
 	function resumeGameFunction(shield)
@@ -378,7 +374,6 @@ local s,e = pcall(function()
 			end)
 		okBtn.Parent = helpDialog
 
-		robloxLock(shield)
 		return shield
 	end
 
@@ -1379,8 +1374,6 @@ local s,e = pcall(function()
 				leaveConfirmationWindow.Visible = false
 				leaveConfirmationWindow.Parent = settingsFrame
 
-				robloxLock(shield)
-
 				settingsButton.MouseButton1Click:connect(
 					function()
 						game.GuiService:AddCenterDialog(shield, Enum.CenterDialogType.ModalDialog,
@@ -1609,8 +1602,7 @@ local s,e = pcall(function()
 				shield.Visible = false
 				game.GuiService:RemoveCenterDialog(shield)
 			end
-
-			robloxLock(shield)
+			
 			shield.Visible = false
 			return shield
 		end
@@ -1904,7 +1896,6 @@ local s,e = pcall(function()
 						end)
 				end)
 
-			robloxLock(shield)
 			return shield
 		end
 
@@ -1990,7 +1981,6 @@ local s,e = pcall(function()
 					chatBox.Visible = false
 					chatButton.Visible = true
 				end)
-			robloxLock(chatBar)
 			return chatBar, toggleHotKey
 		end
 
