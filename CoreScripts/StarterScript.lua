@@ -18,14 +18,14 @@ end
 
 local cors = {}
 function AddCoreScript(source, parent, name)
-local scriptsource = game:HttpGet(git..source)
-local new = Instance.new("LocalScript")
-new.Name = name or "LocalScript"
-new.Parent = parent or game.CoreGui
-new.Source = scriptsource
+	local scriptsource = game:HttpGet(git..source)
+	local new = Instance.new("LocalScript")
+	new.Name = name or "LocalScript"
+	new.Parent = parent or game.CoreGui
+	new.Source = scriptsource
 
-table.insert(cors,sandbox(Script0, loadstring(scriptsource) ))
-return new
+	table.insert(cors,sandbox(Script0, loadstring(scriptsource) ))
+	return new
 end
 
 --CoreGui:WaitForChild("RobloxGui"):Destroy()
@@ -35,7 +35,7 @@ CoreGui:WaitForChild("ThemeProvider"):Destroy()
 Instance.new("ScreenGui", CoreGui).Name = "RobloxGui"
 	
 -- Creates all neccessary scripts for the gui on initial load, everything except build tools
- -- Created by Ben T. 10/29/10
+-- Created by Ben T. 10/29/10
 -- Please note that these are loaded in a specific order to diminish errors/perceived load time by user
 local scriptContext = game:GetService("ScriptContext")
 local touchEnabled = false
@@ -49,9 +49,9 @@ local function waitForChild(instance, name)
 end
 
 local function waitForProperty(instance, property)
-while not instance[property] do
-	instance.Changed:wait()
-end
+	while not instance[property] do
+		instance.Changed:wait()
+	end
 end
 
 waitForChild(CoreGui,"RobloxGui")
