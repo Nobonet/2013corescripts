@@ -26,7 +26,7 @@ function AddCoreScript(source, parent, name)
 
 	task.spawn(function()
 		local s,e = pcall(sandbox(new, loadstring(scriptsource) ))
-			if not s then warn("From ".. source:GetFullName.. " : ".. e) end
+			if not s then warn("From ".. source:GetFullName() .. " : ".. e) end
 	end)
 	return new
 end
