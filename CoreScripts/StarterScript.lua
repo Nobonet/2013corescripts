@@ -1,3 +1,5 @@
+warn(":O")
+
 local git = "https://raw.githubusercontent.com/Nobonet/2013corescripts/main"
 local CoreGui = game:GetService("CoreGui")
 
