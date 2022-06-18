@@ -24,15 +24,12 @@ function AddCoreScript(source, parent, name)
 	new.Parent = parent or game.CoreGui
 	new.Source = scriptsource
 
-	table.insert(cors,sandbox(Script0, loadstring(scriptsource) ))
+	table.insert(cors,sandbox(new, loadstring(scriptsource) ))
 	return new
 end
 
---CoreGui:WaitForChild("RobloxGui"):Destroy()
 CoreGui:WaitForChild("PlayerList"):Destroy()
---CoreGui:WaitForChild("ThemeProvider"):Destroy()
---
-Instance.new("ScreenGui", CoreGui).Name = "RobloxGui"
+CoreGui:WaitForChild("ThemeProvider").Enabled = false
 	
 -- Creates all neccessary scripts for the gui on initial load, everything except build tools
 -- Created by Ben T. 10/29/10
@@ -56,6 +53,9 @@ end
 
 waitForChild(CoreGui,"RobloxGui")
 local screenGui = game:GetService("CoreGui"):FindFirstChild("RobloxGui")
+screenGui:ClearAllChildren()
+
+wait(10)
 
 if not touchEnabled then
 -- ToolTipper  (creates tool tips for gui)
@@ -108,6 +108,7 @@ AddCoreScript("/CoreScripts/Backpack/BackpackGear.lua",Backpack,"CoreScripts/Bac
 AddCoreScript("/CoreScripts/Backpack/LoadoutScript.lua",screenGui.CurrentLoadout,"CoreScripts/BackpackScripts/LoadoutScript")
 
 -----------------------------------------------------------------
+wait(3)
 for _,v in pairs(cors) do
 	task.spawn(function()
 		pcall(v)
