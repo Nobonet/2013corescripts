@@ -1408,7 +1408,9 @@ local s,e = pcall(function()
 			end
 
 			delay(0, function()
-				createSettingsDialog().Parent = gui
+				local s, settingsshield = pcall(createSettingsDialog)
+				print(s, settingsshield)
+				settingsshield.Parent = gui
 
 				gui.BottomLeftControl.SettingsButton.Active = true
 				gui.BottomLeftControl.SettingsButton.Position = UDim2.new(0,2,0,-2)
