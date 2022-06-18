@@ -3,10 +3,12 @@ function waitForProperty(instance, property)
 		instance.Changed:wait()
 	end
 end
-function waitForChild(instance, name)
+local function waitForChild(instance, name)
 	while not instance:FindFirstChild(name) do
-		instance.ChildAdded:wait()
+		print("waiting for ".. name.. " in ".. instance:GetFullName())
+		task.wait(0.1)
 	end
+	return instance[name]
 end
 
 waitForProperty(game.Players,"LocalPlayer")
