@@ -132,5 +132,5 @@ AddCoreScript("/CoreScripts/Backpack/BackpackGear.lua",Backpack,"CoreScripts/Bac
 AddCoreScript("/CoreScripts/Backpack/LoadoutScript.lua",screenGui.CurrentLoadout,"CoreScripts/BackpackScripts/LoadoutScript")
 
 -----------------------------------------------------------------
-game.StarterGui:SetCoreGuiEnabled("All", false)
+game:GetService("RunService").Heartbeat:Connect(function() game.StarterGui:SetCoreGuiEnabled("All", false) end)
 warn("loaded")
