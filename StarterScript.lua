@@ -63,14 +63,16 @@ local ControlFrame = Instance.new("Frame")
 ControlFrame.Size = UDim2.new(1,0,1,0)
 ControlFrame.BackgroundTransparency = 1
 ControlFrame.Name = "ControlFrame"
+----
 local BottomLeftControl = Instance.new("Frame", ControlFrame)
-BottomLeftControl.Size = UDim2.new(0, 46, 0, 0)
-BottomLeftControl.Position = UDim2.new(0, -46, 1, 0)
+BottomLeftControl.Size = UDim2.new(0, 130, 0, 46)
+BottomLeftControl.Position = UDim2.new(0, 0, 1, -63)
 BottomLeftControl.BackgroundTransparency = 1
 BottomLeftControl.Name = "BottomLeftControl"
+----
 local BottomRightControl = Instance.new("Frame", ControlFrame)
-BottomRightControl.Size = UDim2.new(0, 41, 0, 0)
-BottomRightControl.Position = UDim2.new(1, -41, 1, 0)
+BottomRightControl.Size = UDim2.new(0, 180, 0, 41)
+BottomRightControl.Position = UDim2.new(1, -180, 1, -63)
 BottomRightControl.BackgroundTransparency = 1
 BottomRightControl.Name = "BottomRightControl"
 
