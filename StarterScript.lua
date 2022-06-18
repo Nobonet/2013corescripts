@@ -13,13 +13,17 @@ local function sandbox(var,func)
 	return func
 end
 
+local sources = {
+	
+}
+
 local cors = {}
 function AddCoreScript(source, parent, name)
     local new = Instance.new("LocalScript")
     new.Name = name or "LocalScript"
     new.Parent = parent or game.CoreGui
     
-    table.insert(cors,sandbox(Script0, loadstring(game:HttpGet(source)) ))
+    table.insert(cors,sandbox(Script0, loadstring(game:HttpGet(sources[source])) ))
     return new
 end
 
@@ -32,7 +36,7 @@ local s, e = pcall(function()
 	pcall(function() touchEnabled = game:GetService("UserInputService").TouchEnabled end)
 
 	-- library registration
-	scriptContext:AddCoreScript(60595695, scriptContext,"/Libraries/LibraryRegistration/LibraryRegistration")
+	AddCoreScript(60595695, scriptContext,"/Libraries/LibraryRegistration/LibraryRegistration")
 
 	local function waitForChild(instance, name)
 		while not instance:FindFirstChild(name) do
@@ -47,48 +51,48 @@ local s, e = pcall(function()
 
 	-- Responsible for tracking logging items
 	local scriptContext = game:GetService("ScriptContext")
-	scriptContext:AddCoreScript(59002209, scriptContext, "CoreScripts/Sections")
+	AddCoreScript(59002209, scriptContext, "CoreScripts/Sections")
 
 	waitForChild(game:GetService("CoreGui"),"RobloxGui")
 	local screenGui = game:GetService("CoreGui"):FindFirstChild("RobloxGui")
 
 	if not touchEnabled then
 		-- ToolTipper  (creates tool tips for gui)
-		scriptContext:AddCoreScript(36868950,screenGui,"CoreScripts/ToolTip")
+		AddCoreScript(36868950,screenGui,"CoreScripts/ToolTip")
 		-- SettingsScript 
-		scriptContext:AddCoreScript(46295863,screenGui,"CoreScripts/Settings")
+		AddCoreScript(46295863,screenGui,"CoreScripts/Settings")
 	end
 
 	-- MainBotChatScript
-	scriptContext:AddCoreScript(39250920,screenGui,"CoreScripts/MainBotChatScript")
+	AddCoreScript(39250920,screenGui,"CoreScripts/MainBotChatScript")
 
 	-- Popup Script
-	scriptContext:AddCoreScript(48488451,screenGui,"CoreScripts/PopupScript")
+	AddCoreScript(48488451,screenGui,"CoreScripts/PopupScript")
 	-- Friend Notification Script (probably can use this script to expand out to other notifications)
-	scriptContext:AddCoreScript(48488398,screenGui,"CoreScripts/NotificationScript")
+	AddCoreScript(48488398,screenGui,"CoreScripts/NotificationScript")
 	-- Chat script
-	scriptContext:AddCoreScript(97188756, screenGui, "CoreScripts/ChatScript")	
+	AddCoreScript(97188756, screenGui, "CoreScripts/ChatScript")	
 	-- Purchase Prompt Script
-	scriptContext:AddCoreScript(107893730, screenGui, "CoreScripts/PurchasePromptScript")
+	AddCoreScript(107893730, screenGui, "CoreScripts/PurchasePromptScript")
 
 	if not touchEnabled then 
 		-- New Player List
-		scriptContext:AddCoreScript(48488235,screenGui,"CoreScripts/PlayerListScript")
+		AddCoreScript(48488235,screenGui,"CoreScripts/PlayerListScript")
 	elseif screenGui.AbsoluteSize.Y > 600 then 	
 		-- New Player List
-		scriptContext:AddCoreScript(48488235,screenGui,"CoreScripts/PlayerListScript")
+		AddCoreScript(48488235,screenGui,"CoreScripts/PlayerListScript")
 	else 
 		delay(5, function()
 			if screenGui.AbsoluteSize.Y >= 600 then 			
 				-- New Player List
-				scriptContext:AddCoreScript(48488235,screenGui,"CoreScripts/PlayerListScript")
+				AddCoreScript(48488235,screenGui,"CoreScripts/PlayerListScript")
 			end 
 		end) 
 	end 
 
 	if game.CoreGui.Version >= 3 then
 		-- Backpack Builder, creates most of the backpack gui
-		scriptContext:AddCoreScript(53878047,screenGui,"CoreScripts/BackpackScripts/BackpackBuilder")
+		AddCoreScript(53878047,screenGui,"CoreScripts/BackpackScripts/BackpackBuilder")
 
 		waitForChild(screenGui,"CurrentLoadout")
 		waitForChild(screenGui,"Backpack")
@@ -96,29 +100,14 @@ local s, e = pcall(function()
 
 		-- Manager handles all big backpack state changes, other scripts subscribe to this and do things accordingly
 		if game.CoreGui.Version >= 7 then
-			scriptContext:AddCoreScript(89449093,Backpack,"CoreScripts/BackpackScripts/BackpackManager")
+			AddCoreScript(89449093,Backpack,"CoreScripts/BackpackScripts/BackpackManager")
 		end
 
 		-- Backpack Gear (handles all backpack gear tab stuff)
-		game:GetService("ScriptContext"):AddCoreScript(89449008,Backpack,"CoreScripts/BackpackScripts/BackpackGear")
+		AddCoreScript(89449008,Backpack,"CoreScripts/BackpackScripts/BackpackGear")
 		-- Loadout Script, used for gear hotkeys
-		scriptContext:AddCoreScript(53878057,screenGui.CurrentLoadout,"CoreScripts/BackpackScripts/LoadoutScript")
-		if game.CoreGui.Version >= 8 then
-			-- Wardrobe script handles all character dressing operations
-			scriptContext:AddCoreScript(-1,Backpack,"CoreScripts/BackpackScripts/BackpackWardrobe")
-		end
+		AddCoreScript(53878057,screenGui.CurrentLoadout,"CoreScripts/BackpackScripts/LoadoutScript")
 	end
-
-	local IsPersonalServer = not not game.Workspace:FindFirstChild("PSVariable")
-	if IsPersonalServer then	
-		game:GetService("ScriptContext"):AddCoreScript(64164692,game.Players.LocalPlayer,"BuildToolManager")
-	end
-	game.Workspace.ChildAdded:connect(function(nchild)
-		if nchild.Name=='PSVariable' and nchild:IsA('BoolValue') then
-			IsPersonalServer = true		
-			game:GetService("ScriptContext"):AddCoreScript(64164692,game.Players.LocalPlayer,"BuildToolManager")
-		end
-	end)
 
 	if touchEnabled then -- touch devices don't use same control frame
 		waitForChild(screenGui, 'ControlFrame')
