@@ -58,6 +58,24 @@ waitForChild(CoreGui,"RobloxGui")
 local screenGui = game:GetService("CoreGui"):FindFirstChild("RobloxGui")
 screenGui:ClearAllChildren()
 
+-- make control frame
+local ControlFrame = Instance.new("Frame")
+ControlFrame.Size = UDim2.new(1,0,1,0)
+ControlFrame.BackgroundTransparency = 1
+ControlFrame.Name = "ControlFrame"
+local BottomLeftControl = Instance.new("Frame", ControlFrame)
+BottomLeftControl.Size = UDim2.new(0, 46, 0, 0)
+BottomLeftControl.Position = UDim2.new(0, -46, 1, 0)
+BottomLeftControl.BackgroundTransparency = 1
+BottomLeftControl.Name = "BottomLeftControl"
+local BottomRightControl = Instance.new("Frame", ControlFrame)
+BottomRightControl.Size = UDim2.new(0, 41, 0, 0)
+BottomRightControl.Position = UDim2.new(1, -41, 1, 0)
+BottomRightControl.BackgroundTransparency = 1
+BottomRightControl.Name = "BottomRightControl"
+
+ControlFrame.Parent = screenGui
+
 if not touchEnabled then
 -- ToolTipper  (creates tool tips for gui)
 AddCoreScript("/CoreScripts/ToolTip.lua",screenGui,"CoreScripts/ToolTip")
