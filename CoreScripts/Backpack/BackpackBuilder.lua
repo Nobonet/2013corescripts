@@ -6,8 +6,10 @@ local gui = script.Parent
 -- A couple of necessary functions
 local function waitForChild(instance, name)
 	while not instance:FindFirstChild(name) do
-		instance.ChildAdded:wait()
+		print("waiting for ".. name.. " in ".. instance:GetFullName())
+		task.wait(0.1)
 	end
+	return instance[name]
 end
 local function waitForProperty(instance, property)
 	while not instance[property] do
