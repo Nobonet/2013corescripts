@@ -1,4 +1,6 @@
 local git = "https://raw.githubusercontent.com/Nobonet/2013corescripts/main"
+local CoreGui = game:GetService("CoreGui")
+
 local function sandbox(var,func)
 	local env = getfenv(func)
 	local newenv = setmetatable({},{
@@ -25,8 +27,10 @@ function AddCoreScript(source, parent, name)
 end
 
 local s,e = pcall(function()
-	game.CoreGui:WaitForChild("RobloxGui"):Destroy()
-	game.CoreGui:WaitForChild("PlayerList"):Destroy()
+	CoreGui:WaitForChild("RobloxGui"):Destroy()
+	CoreGui:WaitForChild("PlayerList"):Destroy()
+	--
+	Instance.new("ScreenGui", CoreGui).Name = "RobloxGui"
 	
     -- Creates all neccessary scripts for the gui on initial load, everything except build tools
     -- Created by Ben T. 10/29/10
@@ -46,9 +50,8 @@ local s,e = pcall(function()
     	end
     end
     
-    waitForChild(game:GetService("CoreGui"),"RobloxGui")
-    local screenGui = game:GetService("CoreGui"):FindFirstChild("RobloxGui") or Instance.new("ScreenGui", game:GetService("CoreGui"))
-    screenGui.Name = "RobloxGui"
+    waitForChild(CoreGui),"RobloxGui")
+    local screenGui = game:GetService("CoreGui"):FindFirstChild("RobloxGui")
     
     if not touchEnabled then
     	-- ToolTipper  (creates tool tips for gui)
