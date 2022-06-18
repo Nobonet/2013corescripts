@@ -250,7 +250,7 @@ end
 --]]
 function WaitForChild(parent,child)
 	while not parent:FindFirstChild(child) do
-		wait() debugprint(" child "..parent.Name.." waiting for "..child)
+		wait(.1) print(" child "..parent.Name.." waiting for "..child)
 	end
 	return parent[child]
 end
