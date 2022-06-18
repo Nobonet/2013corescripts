@@ -113,6 +113,9 @@ else
 	end) 
 end 
 
+-- Health tray
+AddCoreScript("/CoreScripts/HealthScript.lua",Backpack,"CoreScripts/HealthScript")
+
 -- Backpack Builder, creates most of the backpack gui
 AddCoreScript("/CoreScripts/Backpack/BackpackBuilder.lua",screenGui,"CoreScripts/BackpackScripts/BackpackBuilder")
 
