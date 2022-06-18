@@ -132,9 +132,11 @@ function OnNewCharacter(char)
 	if died then died:Disconnect() end
 	
 	humanoid = char:WaitForChild("Humanoid")
-	----------------------------------------------------
+	---------------------------------------------------- events
 	healthchanged = humanoid.HealthChanged:connect(HealthChanged)
 	died = humanoid.Died:connect(function() HealthChanged(0) end)
+	----------------------------------------------------
+	HealthChanged(humanoid.Health)
 end
 
 OnNewCharacter(self.Character or self.CharacterAdded:Wait())
