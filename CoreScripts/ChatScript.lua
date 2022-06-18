@@ -6,12 +6,13 @@
 ]]
 
 -- Utility functions + Globals
-local function WaitForChild(parent, childName)	
-	while parent:FindFirstChild(childName) == nil do 
-		parent.ChildAdded:wait(0.03)
-	end 	
-	return parent[childName]
-end 
+local function waitForChild(instance, name)
+	while not instance:FindFirstChild(name) do
+		print("waiting for ".. name.. " in ".. instance:GetFullName())
+		task.wait(0.1)
+	end
+	return instance[name]
+end
 
 local function typedef(obj)
 	return obj 
