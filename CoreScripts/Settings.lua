@@ -392,7 +392,6 @@ local s,e = pcall(function()
 		yesButton.ZIndex = baseZIndex + 4
 		yesButton.Parent = frame
 		yesButton.Modal = true
-		yesButton:SetVerb("Exit")
 
 		local noButton = createTextButton("Stay",Enum.ButtonStyle.RobloxButtonDefault,Enum.FontSize.Size24,UDim2.new(0,128,0,50),UDim2.new(0,90,0.8,0))
 		noButton.Name = "NoButton"
@@ -534,7 +533,6 @@ local s,e = pcall(function()
 		screenshotButton.ZIndex = baseZIndex + 4
 		screenshotButton.Parent = gameMainMenuFrame
 		screenshotButton.Visible = not macClient
-		screenshotButton:SetVerb("Screenshot")
 
 		local screenshotShortcut = helpShortcut:clone()
 		screenshotShortcut.Name = "ScreenshotShortcutText"
@@ -549,7 +547,6 @@ local s,e = pcall(function()
 		recordVideoButton.ZIndex = baseZIndex + 4
 		recordVideoButton.Parent = gameMainMenuFrame
 		recordVideoButton.Visible = not macClient
-		recordVideoButton:SetVerb("RecordToggle")
 
 		local recordVideoShortcut = helpShortcut:clone()
 		recordVideoShortcut.Visible = hasGraphicsSlider
@@ -563,7 +560,6 @@ local s,e = pcall(function()
 		stopRecordButton.BackgroundTransparency = 1
 		stopRecordButton.Image = "rbxasset://textures/ui/RecordStop.png"
 		stopRecordButton.Size = UDim2.new(0,59,0,27)
-		stopRecordButton:SetVerb("RecordToggle")
 
 		stopRecordButton.MouseButton1Click:connect(function() recordVideoClick(recordVideoButton, stopRecordButton) end)
 		stopRecordButton.Visible = false
@@ -1016,7 +1012,6 @@ local s,e = pcall(function()
 			studioCheckbox.Name = "StudioCheckbox"
 			studioCheckbox.ZIndex = baseZIndex + 4
 			--studioCheckbox.Parent = gameSettingsMenuFrame -- todo: enable when studio h4x aren't an issue anymore
-			studioCheckbox:SetVerb("TogglePlayMode")
 			studioCheckbox.Visible = false -- todo: enabled when studio h4x aren't an issue anymore
 
 			local wasManualGraphics = (settings().Rendering.QualityLevel ~= Enum.QualityLevel.Automatic)
@@ -1062,7 +1057,6 @@ local s,e = pcall(function()
 		fullscreenCheckbox.Name = "FullscreenCheckbox"
 		fullscreenCheckbox.ZIndex = baseZIndex + 4
 		fullscreenCheckbox.Parent = gameSettingsMenuFrame
-		fullscreenCheckbox:SetVerb("ToggleFullScreen")
 		if UserSettings().GameSettings:InFullScreen() then fullscreenCheckbox.Text = "X" end
 		if hasGraphicsSlider then
 			UserSettings().GameSettings.FullscreenChanged:connect(function(isFullscreen)
