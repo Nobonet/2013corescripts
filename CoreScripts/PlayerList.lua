@@ -2946,7 +2946,8 @@ end
  -- Hookups and initialization
  ----------------------------  
 function debugPlayerAdd(p)
-	InsertPlayerFrame(p)
+	local s, e = pcall(InsertPlayerFrame, p)
+	if not s then warn(e) end
 end
  
 while not game:GetService('Teams') do wait(1/30) debugprint('Waiting For Teams') end
