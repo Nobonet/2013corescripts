@@ -162,14 +162,14 @@ function getMembershipTypeIcon(membershipType,playerName)
 		end
 	elseif membershipType == Enum.MembershipType.None then
 		return ""
-	elseif membershipType == Enum.MembershipType.BuildersClub then
+	elseif membershipType == Enum.MembershipType.BuildersClub or membershipType == Enum.MembershipType.Premium then
 		return "rbxasset://textures/ui/TinyBcIcon.png"
 	elseif membershipType == Enum.MembershipType.TurboBuildersClub then
 		return "rbxasset://textures/ui/TinyTbcIcon.png"
 	elseif membershipType == Enum.MembershipType.OutrageousBuildersClub then
 		return "rbxasset://textures/ui/TinyObcIcon.png"
 	else
-		error("Unknown membershipType" .. membershipType)
+		warn("Unknown membershipType", membershipType)
 	end	
 end
 
