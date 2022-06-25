@@ -1,0 +1,53 @@
+BillboardGui0 = Instance.new("BillboardGui")
+ImageLabel1 = Instance.new("ImageLabel")
+ImageLabel2 = Instance.new("ImageLabel")
+TextLabel4 = Instance.new("TextLabel")
+BillboardGui0.Name = "ChatBubble"
+BillboardGui0.Size = UDim2.new(0, 56, 0, 150)
+BillboardGui0.Active = true
+BillboardGui0.ResetOnSpawn = false
+BillboardGui0.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+BillboardGui0.MaxDistance = 100
+BillboardGui0.SizeOffset = Vector2.new(0, 0.699999988)
+BillboardGui0.StudsOffsetWorldSpace = Vector3.new(0, 1.5, 0)
+ImageLabel1.Name = "Tail"
+ImageLabel1.Parent = BillboardGui0
+ImageLabel1.Position = UDim2.new(0, 20, 1, -20)
+ImageLabel1.Size = UDim2.new(0, 20, 0, 20)
+ImageLabel1.BackgroundColor = BrickColor.new("Institutional white")
+ImageLabel1.BackgroundColor3 = Color3.new(1, 1, 1)
+ImageLabel1.BackgroundTransparency = 1
+ImageLabel1.ZIndex = 2
+ImageLabel1.Image = "rbxassetid://2582470060"
+ImageLabel2.Name = "Body"
+ImageLabel2.Parent = BillboardGui0
+ImageLabel2.Position = UDim2.new(0, 30, 1, -13)
+ImageLabel2.Size = UDim2.new(0, 125, 0, 35)
+ImageLabel2.AnchorPoint = Vector2.new(0.5, 1)
+ImageLabel2.BackgroundColor = BrickColor.new("Institutional white")
+ImageLabel2.BackgroundColor3 = Color3.new(1, 1, 1)
+ImageLabel2.BackgroundTransparency = 1
+ImageLabel2.Image = "rbxassetid://2582470061"
+ImageLabel2.ScaleType = Enum.ScaleType.Slice
+ImageLabel2.SliceCenter = Rect.new(32, 32, 48, 48)
+TextLabel4.Parent = BillboardGui0
+TextLabel4.Position = UDim2.new(0, 30, 0, 55)
+TextLabel4.Size = UDim2.new(0, 300, 1, -75)
+TextLabel4.AnchorPoint = Vector2.new(0.5, 0)
+TextLabel4.BackgroundColor = BrickColor.new("Institutional white")
+TextLabel4.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel4.BackgroundTransparency = 1
+TextLabel4.BorderSizePixel = 0
+TextLabel4.Font = Enum.Font.Arial
+TextLabel4.FontSize = Enum.FontSize.Size24
+TextLabel4.Text = "testing 123"
+TextLabel4.TextColor = BrickColor.new("Really black")
+TextLabel4.TextColor3 = Color3.new(0, 0, 0)
+TextLabel4.TextSize = 22
+TextLabel4.TextWrap = true
+TextLabel4.TextWrapped = true
+TextLabel4.TextYAlignment = Enum.TextYAlignment.Bottom
+
+BillboardGui0:SetAttribute("Tier", 0)
+
+return BillboardGui0
