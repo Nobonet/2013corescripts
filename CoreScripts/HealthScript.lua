@@ -1,4 +1,4 @@
-local HealthGUI_prototype = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nobonet/2013corescripts/main/CoreScripts/HealthGUI.lua"))()
+local HealthGUI_prototype = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nobonet/2013corescripts/main/Objects/HealthGUI.lua"))()
 local CoreGui = game:GetService("CoreGui")
 
 local lastHealth = 100
